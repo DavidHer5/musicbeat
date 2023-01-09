@@ -5,6 +5,7 @@ import 'firebase/compat/firestore';
 import "firebase/compat/database";
 import "firebase/compat/storage";
 
+
 //Constante de firebase
 const firebaseConfig = {
     apiKey: "AIzaSyBrFmZevjcX0ldb5avMXioVV3Wh4uBcrBY",
@@ -26,5 +27,6 @@ const firebaseConfig = {
   const auth = firebase.auth();
   
   export { auth, db };
+  //export const db = getFirestore()
 
   

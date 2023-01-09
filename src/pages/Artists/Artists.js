@@ -1,6 +1,6 @@
 //Importaciones
 import React, {useState, useEffect} from 'react';
-import {Grid} from "semantic-ui-react";
+import {Grid, Dropdown} from "semantic-ui-react";
 import {map} from "lodash";
 import {Link} from "react-router-dom";
 import firebase from '../../utils/Firebase';
@@ -15,6 +15,7 @@ const db = firebase.firestore(firebase);
 export default function Artists() {
     //Estados
     const [artists, setArtists] = useState([]);
+
 
     //Hook de efecto para obtener los diferentes artistas
     useEffect(() => {
@@ -32,17 +33,17 @@ export default function Artists() {
 
   return (
     <div className='artists'>
-      <h1>Artistas</h1>
-      <Grid>
+        <h1>Artistas</h1>
+        <Grid>
             {map(artists, artist => (
-                <Grid.Column key={artist.id} computer={3}>
+                <div key={artist.id}>
                     <RenderArtist artist={artist}/>
-                </Grid.Column>
+                </div>
             ))}
-      </Grid>
-    </div>
-  )
-}
+        </Grid>
+        </div>
+    )
+    }
 
 function RenderArtist(props) {
     const {artist} = props;

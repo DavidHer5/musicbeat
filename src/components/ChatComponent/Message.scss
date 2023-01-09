@@ -1,0 +1,31 @@
+@import '../../scss/index.scss';
+
+.messages {
+    margin-bottom: 30px;
+    
+    .imagenPerfil{
+        height: 50px;
+        width: 50px;
+        border-radius: 20px;
+        float: left;
+        
+    }
+    .namePerfil {
+        margin-left: 70px;
+        color: $primary-color;
+        font-weight: bold;
+        
+    }
+    .messagePerfil{
+        margin-left: 70px;
+        color: white;
+    }
+    .messageFecha{
+        margin-left: 70px;
+        color: white;
+    }
+    .messageContainer {
+        background-color: #03938C;
+        border-radius: 20px;
+    }
+}

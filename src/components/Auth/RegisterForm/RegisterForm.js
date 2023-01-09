@@ -4,7 +4,9 @@ import { Form, Icon, Input, Button} from "semantic-ui-react";
 import {toast} from "react-toastify"
 import { validateEmail} from "../../../utils/Validaciones";
 import firebase from "../../../utils/Firebase";
-import "firebase/auth";
+import "firebase/compat/auth";
+
+
 
 //Importación del archivo Sass 
 import "./RegisterForm.scss";
@@ -20,6 +22,7 @@ export default function RegisterForm(props) {
   const [mostrarContraseña, setMostrarContraseña] = useState (false);
   const [formError, setFormError] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+
 
   //Manipulador para mostrar la contraseña
   const handlerMostrarContraseña = () => {
@@ -64,12 +67,15 @@ export default function RegisterForm(props) {
       setIsLoading(true);
       firebase.auth().createUserWithEmailAndPassword(formData.email, formData.password).then(() => {
         changeUserName();
+        //sendVerificationEmail();
+
       }).catch(() => {
         toast.error("Error al crear la cuenta");
       }).finally(() => {
         setIsLoading(false);
         setSelectedForm(null);
-      })
+      });
+      
     }
   };
 
@@ -82,6 +88,13 @@ export default function RegisterForm(props) {
     });
   };
 
+  /*const sendVerificationEmail = () => {
+    firebase.auth().currentUser.sendVerificationEmail().then(() => {
+      toast.success("Se ha enviado el email de verificación");
+    }).catch(() => {
+      toast.error("Error al enviar el email de verificación");
+    })
+  }*/
 
 
   return (
@@ -114,7 +127,7 @@ export default function RegisterForm(props) {
                 <Icon name ="eye" link onClick={handlerMostrarContraseña} />
               )}
          
-              //error = {}
+
             />
             {formError.password && (
               <span className='error-text'>

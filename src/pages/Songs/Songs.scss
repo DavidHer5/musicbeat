@@ -1,0 +1,39 @@
+@import "../../scss/index.scss";
+
+.songs {
+    margin: 50px;
+
+    > h1 {
+        border-bottom: 1px solid $border-grey-light;
+        margin-bottom: 50px;
+        padding-bottom: 10px;
+        font-size: 40px;
+    }
+    &__item {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .box{
+        width: 200px;
+        height: 150px;
+        padding: 40px;
+        transition: 0.1s; 
+        margin-top: 40px;
+        border-radius: 50px;
+        background-size: cover;
+    
+    }
+    .box:hover{
+        transform: scale(1.2);
+        background-size: cover;
+        z-index: 2;
+        box-shadow: 2px 2px 2px #000;
+        
+    }
+    h3 {
+        font-size: 20px;
+        background-color: white;
+        border-radius: 20px;
+        text-align: center;
+    }
+}

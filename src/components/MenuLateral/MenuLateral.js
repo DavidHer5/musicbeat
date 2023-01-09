@@ -5,9 +5,20 @@ import {Link, withRouter} from "react-router-dom";
 import BasicModal from '../Modal/BasicModal';
 import AddArtistForm from '../Artists/AddArtistForm';
 import AddAlbumForm from '../Albums/AddAlbumForm/AddAlbumForm';
+import AddSongForm from '../Songs/AddSongForm';
+import "./MenuLateral.scss";
+
+import firebase from "../../utils/Firebase";
+
+const db = firebase.firestore(firebase);
+
+async function isUserAdmin(uid) {
+    const response = await db.collection("administradores").doc(uid).get();
+    return response.exists;
+}
 
 //Importación del Sass
-import "./MenuLateral.scss";
+
 
 
 function MenuLateral(props) {
@@ -17,14 +28,23 @@ function MenuLateral(props) {
     const [showModal, setShowModal] = useState(false);
     const [titleModal, setTitleModal] = useState(null);
     const [contentModal, setContentModal] = useState(null);
+    const [userAdmin, setUserAdmin] = useState(false);
 
+
+    useEffect(() => {
+        isUserAdmin(user.uid).then(response => {
+            setUserAdmin(response);
+        })
+    }, [user])
 
     //Función para saber que menú está seleccionado
     const handlerMenu = (e, menu) => {
         setActiveMenu(menu.name);
     }
 
-    //Función para saber cual menú de creación de canción, artista o album esta seleccionado y llamar a su clase correspondiente.
+    
+
+    //Función para saber que menú de creación de canción, artista o album esta seleccionado y llamar a su clase correspondiente.
     const handlerModal = (type) => {
         switch (type) {
             case "artist":
@@ -34,7 +54,7 @@ function MenuLateral(props) {
                 break;
             case "song":
                 setTitleModal("Nueva canción");
-                setContentModal(<h2>Formulario nueva canción</h2>);
+                setContentModal(<AddSongForm setShowModal={setShowModal} />);
                 setShowModal(true);
                 break; 
             case "album":
@@ -77,9 +97,26 @@ function MenuLateral(props) {
                     active={activeMenu === "albums"}
                     onClick={handlerMenu}
                     >
-                    <Icon name="window maximize outline" /> Albumes
+                    <Icon name="folder open outline" /> Albumes
+                </Menu.Item>
+                <Menu.Item as={Link} 
+                    to="/songs" 
+                    name="songs" 
+                    active={activeMenu === "songs"}
+                    onClick={handlerMenu}
+                    >
+                    <Icon name="music" /> Canciones
+                </Menu.Item>
+                <Menu.Item as={Link} 
+                    to="/chat" 
+                    name="chat" 
+                    active={activeMenu === "chat"}
+                    onClick={handlerMenu}
+                    >
+                    <Icon name="paper plane outline" /> Chats
                 </Menu.Item>
             </div>
+            {userAdmin && (  
             <div className='footer'>
                 <Menu.Item onClick={() => handlerModal("artist")}>
                     <Icon name="plus square outline" /> Nuevo Artista
@@ -91,6 +128,7 @@ function MenuLateral(props) {
                     <Icon name="plus square outline" /> Nuevo Álbum
                 </Menu.Item>
             </div>
+            )}
        </Menu>
        <BasicModal show={showModal} setShow={setShowModal} title={titleModal}>
         {contentModal}

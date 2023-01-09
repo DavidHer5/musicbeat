@@ -35,9 +35,9 @@ export default function Albums() {
       <h1>Albumes</h1>
       <Grid>
             {map(albums, album => (
-                <Grid.Column key={album.id} computer={3}>
+                <div key={album.id} computer={3}>
                     <RenderAlbum album={album}/>
-                </Grid.Column>
+                </div>
             ))}
       </Grid>
     </div>

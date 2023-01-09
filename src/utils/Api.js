@@ -1,5 +1,5 @@
 //CÓDIGO DE PRUEBA PARA LA AUTENTICACIÓN DEL EMAIL Y LA CONTRASEÑA
-import firebaseApp  from './Firebase' ;
+/*import firebaseApp  from './Firebase' ;
 
 import {
     EmailAuthProvider,
@@ -24,4 +24,7 @@ export const reauthenticate = password => {
     return user.reauthenticateWithCredential(credentials);
         
  
-}
+}*/
+
+
+

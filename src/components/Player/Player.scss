@@ -30,28 +30,11 @@
         align-items: center;
         flex-direction: column;
 
-        .controles {
-            margin-bottom: 10px;
-
-            i{
-                font-size: 30px !important;
-                margin: 0 !important;
-
-                &:hover {
-                    cursor: pointer;
-                }
-            }
+        audio {
+            width: 600px; 
+            
         }
-        .progress {
-            width: 100%;
-            margin: 0;
-
-            .bar {
-                min-width: 0%;
-                .progress {
-                    display: none;
-                }
-            }
-        }
+        
     }
+
 }

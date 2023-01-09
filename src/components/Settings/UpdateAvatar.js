@@ -17,7 +17,6 @@ export default function UpdateAvatar(props) {
     const onDrop = useCallback(acceptedFiles => {
        const file = acceptedFiles[0];
        setAvatarUrl(URL.createObjectURL(file));
-        //TOOD: ....
        uploadImage(file).then(() => {
         updateUserAvatar();
        });

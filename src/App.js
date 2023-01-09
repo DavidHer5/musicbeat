@@ -2,7 +2,7 @@
 import React, {useState} from "react";
 import {ToastContainer} from "react-toastify";
 import firebase from "./utils/Firebase";
-import "firebase/auth";
+import "firebase/compat/auth";
 import Auth from "./pages/Auth";
 import LoggedLayout from "./Layouts/LoggedLayout";
 
@@ -14,6 +14,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [reloadApp, setReloadApp] = useState(false);
+
 
   //Comprobación para saber si el usuario esta logueado
   firebase.auth().onAuthStateChanged(currentUser => {

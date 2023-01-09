@@ -8,7 +8,12 @@ const isDev = require('electron-is-dev');
 let mainWindow;
 
 function createWindow() {
-  mainWindow = new BrowserWindow({width: 900, height: 680});
+  mainWindow = new BrowserWindow({
+    width: 1500, 
+    height: 1000,
+    title: "MusicBeat",
+    icon:'/src/assets/png/MusicBeat L.png'
+  });
   mainWindow.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`);
   if (isDev) {
     // Open the DevTools.
@@ -16,6 +21,7 @@ function createWindow() {
     mainWindow.webContents.openDevTools();
   }
   mainWindow.on('closed', () => mainWindow = null);
+  mainWindow.setMenuBarVisibility(false);
 }
 
 app.on('ready', createWindow);

@@ -54,6 +54,7 @@ function ChangeEmailForm(props){
                         auth.currentUser.email,
                         password
                         );
+                        
         reauthenticateWithCredential(auth.currentUser, credential).then(() => {
             const currentUser = firebase.auth().currentUser;
 
@@ -75,6 +76,7 @@ function ChangeEmailForm(props){
         });
     }
 
+
     const onSubmit= () => {
         if(!formData.email) {
             toast.warning("El email es el mismo");
@@ -92,6 +94,7 @@ function ChangeEmailForm(props){
                 <Input 
                     defaultValue={email} 
                     type="text"   
+                    placeholder="Correo electrónico"
                     onChange={e => setFormData({...formData, email: e.target.value})}
                 />
             </Form.Field>

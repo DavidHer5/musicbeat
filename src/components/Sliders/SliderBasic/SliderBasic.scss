@@ -4,6 +4,7 @@
 
 
     h2 {
+        
         border-bottom: 1px solid $border-grey-light;
         padding-bottom: 10px;
         margin-bottom: 20px;
@@ -18,13 +19,29 @@
         }
         &__items {
             padding: 20px;
+            
 
-            .avatar{
-                height: 160px;
-                width: 100%;
-                background-repeat: no-repeat;
+            .avatar {
+                width: 340px;
+                height: 200px;
+                padding: 40px;
+                transition: 0.1s; 
+                border-radius: 20px;
                 background-size: cover;
-                background-position: center;
+            }
+            .avatar:hover{
+                transform: scale(1.1);
+                background-size: cover;
+                z-index: 2;
+                box-shadow: 2px 2px 2px #000;
+            }
+
+            h3 {
+                font-size: 20px;
+                background-color: white;
+                border-radius: 20px;
+                text-align: center;
+                
             }
 
         }

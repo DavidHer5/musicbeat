@@ -9,27 +9,35 @@ import Artist from "../pages/Artist";
 import Artists from "../pages/Artists";
 import Albums from "../pages/Albums";
 import Album from '../pages/Album';
+import Chat from '../pages/Chat';
+import Songs from '../pages/Songs';
 
 export default function Rutas(props) {
   //Estados
-  const {user, setReloadApp} = props;
+  const {user, setReloadApp, playerSong} = props;
 
   return (
     <Switch>
         <Route path='/' exact>
-          <Home />
+          <Home playerSong={playerSong}/>
         </Route>
         <Route path='/artists' exact>
           <Artists />
         </Route>
         <Route path='/artist/:id' exact>
-          <Artist />
+          <Artist playerSong={playerSong}/>
         </Route>
         <Route path='/albums' exact>
           <Albums />
         </Route>
         <Route path='/album/:id' exact>
-          <Album />
+          <Album playerSong={playerSong}/>
+        </Route>
+        <Route path='/songs' exact>
+          <Songs playerSong={playerSong}/>
+        </Route>
+        <Route path="/chat" exact>
+          <Chat />
         </Route>
         <Route path='/settings' exact>
           <Settings user={user} setReloadApp={setReloadApp}/>

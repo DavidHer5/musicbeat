@@ -21,7 +21,7 @@ export default function SliderBasic(props) {
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 2000,
-        pauseOnHover: false,
+        pauseOnHover: true,
         className: "slider-basic__list"
       };
 
@@ -34,7 +34,11 @@ export default function SliderBasic(props) {
         <h2>{title}</h2>
         <Slider {...settings}>
           {map(data, item => (
-            <RenderItem key={item.id} item={item} folderImage={folderImage} urlName={urlName}/>
+            <RenderItem 
+              key={item.id} 
+              item={item} 
+              folderImage={folderImage} 
+              urlName={urlName}/>
           ))}
         </Slider>
       </div>
@@ -44,7 +48,7 @@ export default function SliderBasic(props) {
 //Función para renderizar los diferentes artistas que hay en la base de datos
 function RenderItem(props) {
     const {item, folderImage, urlName} = props;
-
+    
     const [imageURL, setImageURL] = useState(null);
 
     //Hook para sacar los artistas

@@ -1,7 +1,8 @@
 @import "../../scss/index.scss";
 
 .ui.grid.logged-layout {
-    background-color: $background-grey-dark-light;
+    background-repeat: no-repeat;
+    background-size: cover;
     min-height: 100vh;
     margin: 0;
 
@@ -22,7 +23,7 @@
     }
     .content{
         overflow-y: scroll;
-        height: calc(100vh - 105px);
+        height: 100%;
 
         &::-webkit-scrollbar{
             display: none;
