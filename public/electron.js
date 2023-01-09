@@ -12,7 +12,6 @@ function createWindow() {
     width: 1500, 
     height: 1000,
     title: "MusicBeat",
-    icon:'/src/assets/png/MusicBeat L.png'
   });
   mainWindow.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`);
   if (isDev) {

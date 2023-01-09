@@ -18,7 +18,7 @@ export default function SongsSlider(props) {
     const settings = {
         dots: false,
         infinite: true,
-        slidesToShow: 2,
+        slidesToShow: 3,
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 2000,
@@ -33,10 +33,13 @@ export default function SongsSlider(props) {
 
   return (
     <div className='songs-slider'>
-        <h2>{title}</h2>
+        <h1>{title}</h1>
         <Slider {...settings}>
             {map(data, item => (
-                <Song key={item.id} item={item} playerSong={playerSong}/>
+                <Song 
+                    key={item.id} 
+                    item={item} 
+                    playerSong={playerSong}/>
             ))}
         </Slider>
     </div>

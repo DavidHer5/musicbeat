@@ -4,9 +4,11 @@ import { withRouter } from 'react-router-dom';
 import {map} from "lodash";
 import firebase from "../../utils/Firebase";
 import "firebase/firestore";
+import "firebase/storage";
 import BannerArtist from '../../components/Artists/BannerArtist';
 import SliderBasic from "../../components//Sliders/SliderBasic";
 import SongsSlider from '../../components/Sliders/SongsSlider';
+import ListSongs from '../../components/Songs/ListSongs';
 
 //Importación del Sass
 import "./Artist.scss";
@@ -21,6 +23,8 @@ function Artist(props) {
   const [artist, setArtist] = useState(null);
   const [albums, setAlbums] = useState([]);
   const [songs, setSongs] = useState([]);
+
+  console.log(match);
 
   //Hook para obtener los artistas
   useEffect(() => {
@@ -77,11 +81,7 @@ function Artist(props) {
           folderImage="album"
           urlName="album"
           />
-        <SongsSlider 
-          title="Canciones"
-          data={songs}
-          playerSong={playerSong}
-        />
+        <ListSongs songs={songs} playerSong={playerSong}/>
         </div>
     </div>
   );

@@ -25,9 +25,10 @@ export default function SliderBasic(props) {
         className: "slider-basic__list"
       };
 
-  if(size(data) < 4) {
-    return null;
-  }
+      if(size(data) < 1) {
+        return null;
+      }
+
 
   return (
     <div className='basic-slider'>

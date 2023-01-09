@@ -1,5 +1,5 @@
 import React from 'react';
-import {Table, Icon, Tab} from "semantic-ui-react";
+import {Table, Icon, Tab, Grid} from "semantic-ui-react";
 import {map} from "lodash";
 
 import "./ListSongs.scss";
@@ -8,21 +8,14 @@ export default function ListSongs(props) {
     const {songs, albumImg, playerSong} = props;
 
   return (
-    <Table inverted className='list-songs'>
-        <Table.Header>
-            <Table.Row>
-                <Table.HeaderCell />
-                <Table.HeaderCell>
-                    Titulo
-                </Table.HeaderCell>
-            </Table.Row>
-        </Table.Header>
-        <Table.Body>
+    <div>
+        <h1>Canciones</h1>
+        <Grid>
             {map(songs, song => (
                 <Song key={song.id} song={song} playerSong={playerSong} albumImg={albumImg}/>
             ))}
-        </Table.Body>
-    </Table>
+        </Grid>
+    </div>
   )
 }
 
@@ -35,13 +28,8 @@ function Song(props) {
     }
 
     return (
-        <Table.Row onClick={onPlay}>
-            <Table.Cell collapsing>
-                <Icon name="play circle outline"/>
-            </Table.Cell>
-            <Table.Cell>
-                {song.name}
-            </Table.Cell>
-        </Table.Row>
+        <div className="card" onClick={onPlay} >
+            <h2>{song.name}</h2>
+        </div>
     );
 }

@@ -58,8 +58,8 @@ export default function Chat() {
         <div className='container'>
             <div className='container2'>
                 <div className='header'>
-                    <h1 className='titulo'>Bienvenido al chat grupal de MusicBeat</h1>
-                    <h2 className='subtitulo'>Chatea con los demás mientras escuhas tu música preferida</h2>
+                    <h2 className='titulo'>Bienvenido al chat grupal de MusicBeat</h2>
+                    <h1 className='subtitulo'>Chatea con los demás mientras escuchas tu música preferida</h1>
                 </div>
                 <div className='channel'>
                     {messages.map(message => (
